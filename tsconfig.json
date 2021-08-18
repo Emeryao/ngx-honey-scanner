@@ -1,0 +1,11 @@
+{
+    "files": [],
+    "references": [
+        {
+            "path": "./projects/hid-scanner/tsconfig.lib.json"
+        },
+        {
+            "path": "./tsconfig.app.json"
+        }
+    ]
+}

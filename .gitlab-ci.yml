@@ -1,0 +1,29 @@
+stages:
+  - lint
+  - publish
+
+lint:
+  stage: lint
+  tags:
+    - node
+  script:
+    - node --version
+    - npm --version
+    - npm ci
+    - npx ts-node ./tools/CI/npm-outdated "$(npm outdated --json)"
+    - npm run lint
+
+publish:
+  stage: publish
+  only:
+    - dev
+    - master
+  tags:
+    - node
+  script:
+    - node --version
+    - npm --version
+    - npm ci
+    - TAG=latest
+    - if [ $CI_COMMIT_REF_NAME == dev ]; then TAG=dev; fi
+    - npm run deploy -- --tag $TAG --packageVersion $(npx ts-node ./tools/CI/package-version.ts "$CI_PIPELINE_ID")

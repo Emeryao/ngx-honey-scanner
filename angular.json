@@ -1,0 +1,145 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "defaultProject": "hid-scanner",
+    "newProjectRoot": "projects",
+    "projects": {
+        "hid-scanner": {
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "configurations": {
+                        "development": {
+                            "tsConfig": "projects/hid-scanner/tsconfig.lib.json"
+                        },
+                        "production": {
+                            "tsConfig": "projects/hid-scanner/tsconfig.lib.prod.json"
+                        }
+                    },
+                    "defaultConfiguration": "production",
+                    "options": {
+                        "project": "projects/hid-scanner/ng-package.json"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "exclude": [
+                            "**/node_modules/**"
+                        ],
+                        "tsConfig": [
+                            "projects/hid-scanner/tsconfig.lib.json"
+                        ]
+                    }
+                }
+            },
+            "prefix": "lib",
+            "projectType": "library",
+            "root": "projects/hid-scanner",
+            "sourceRoot": "projects/hid-scanner/src"
+        },
+        "hid-scanner-puppet": {
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "configurations": {
+                        "production": {
+                            "budgets": [
+                                {
+                                    "maximumError": "5mb",
+                                    "maximumWarning": "2mb",
+                                    "type": "initial"
+                                },
+                                {
+                                    "maximumError": "10kb",
+                                    "maximumWarning": "6kb",
+                                    "type": "anyComponentStyle"
+                                }
+                            ],
+                            "buildOptimizer": true,
+                            "extractCss": true,
+                            "extractLicenses": true,
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "namedChunks": false,
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "vendorChunk": false
+                        }
+                    },
+                    "options": {
+                        "aot": true,
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets"
+                        ],
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "outputPath": "dist/hid-scanner-puppet",
+                        "polyfills": "src/polyfills.ts",
+                        "scripts": [],
+                        "styles": [
+                            "src/styles.scss"
+                        ],
+                        "tsConfig": "tsconfig.app.json"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "exclude": [
+                            "**/node_modules/**"
+                        ],
+                        "tsConfig": [
+                            "tsconfig.app.json"
+                        ]
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "hid-scanner-puppet:build:production"
+                        }
+                    },
+                    "options": {
+                        "browserTarget": "hid-scanner-puppet:build"
+                    }
+                }
+            },
+            "prefix": "app",
+            "projectType": "application",
+            "root": "",
+            "schematics": {
+                "@schematics/angular:class": {
+                    "skipTests": true
+                },
+                "@schematics/angular:component": {
+                    "skipTests": true,
+                    "style": "scss"
+                },
+                "@schematics/angular:directive": {
+                    "skipTests": true
+                },
+                "@schematics/angular:guard": {
+                    "skipTests": true
+                },
+                "@schematics/angular:module": {
+                    "skipTests": true
+                },
+                "@schematics/angular:pipe": {
+                    "skipTests": true
+                },
+                "@schematics/angular:service": {
+                    "skipTests": true
+                }
+            },
+            "sourceRoot": "src"
+        }
+    },
+    "version": 1
+}

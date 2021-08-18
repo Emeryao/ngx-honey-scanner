@@ -1,0 +1,1 @@
+D:/Repos/GitHub/@ng-all/hid-scanner/README.md

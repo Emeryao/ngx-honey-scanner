@@ -1,0 +1,10 @@
+{
+    "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+    "assets": [
+        "./README.md"
+    ],
+    "dest": "../../dist/hid-scanner",
+    "lib": {
+        "entryFile": "src/public-api.ts"
+    }
+}

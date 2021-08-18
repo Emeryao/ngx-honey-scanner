@@ -1,0 +1,41 @@
+{
+    "dependencies": {
+        "@angular/animations": "^12.2.1",
+        "@angular/common": "^12.2.1",
+        "@angular/compiler": "^12.2.1",
+        "@angular/core": "^12.2.1",
+        "@angular/forms": "^12.2.1",
+        "@angular/platform-browser": "^12.2.1",
+        "@angular/platform-browser-dynamic": "^12.2.1",
+        "@angular/router": "^12.2.1",
+        "rxjs": "^7.3.0",
+        "tslib": "^2.3.1",
+        "zone.js": "^0.11.4"
+    },
+    "devDependencies": {
+        "@angular-devkit/build-angular": "^12.2.1",
+        "@angular/cli": "^12.2.1",
+        "@angular/compiler-cli": "^12.2.1",
+        "@angular/language-service": "^12.2.1",
+        "@types/node": "^16.6.1",
+        "codelyzer": "^6.0.2",
+        "ng-packagr": "^12.2.0",
+        "ts-node": "^10.2.0",
+        "tslint": "^6.1.3",
+        "typescript": "~4.3.5"
+    },
+    "name": "@ng-all/hid-scanner",
+    "private": true,
+    "repository": {
+        "directory": "projects/hid-scanner",
+        "type": "git",
+        "url": "https://github.com/ng-all/hid-scanner.git"
+    },
+    "scripts": {
+        "build": "ng build",
+        "deploy": "npm publish ./dist/hid-scanner --access public",
+        "lint": "tsc && ng lint",
+        "start": "ng build && ng serve hid-scanner-puppet"
+    },
+    "version": "0.0.0"
+}
