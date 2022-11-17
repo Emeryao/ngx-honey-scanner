@@ -1,6 +1,5 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-    "defaultProject": "hid-scanner",
     "newProjectRoot": "projects",
     "projects": {
         "hid-scanner": {
@@ -68,7 +67,9 @@
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "outputPath": "dist/hid-scanner-puppet",
-                        "polyfills": "src/polyfills.ts",
+                        "polyfills": [
+                            "zone.js"
+                        ],
                         "scripts": [],
                         "styles": [
                             "src/styles.scss"

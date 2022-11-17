@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { fromEvent, Observable, Subject, Subscription } from 'rxjs';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class HidScannerService {
 
     private keyEventSubscription?: Subscription;
@@ -10,24 +10,24 @@ export class HidScannerService {
 
     private lastTimestamp: number = 0;
 
-    private result: Subject<string> = new Subject<string>();
+    private readonly result: Subject<string> = new Subject<string>();
 
     public onScan(threshold: number = 99): Observable<string> {
         this.keyEventSubscription = fromEvent<KeyboardEvent>(document, 'keypress').subscribe({
-            next: e => {
-                if (this.lastTimestamp == 0 || e.timeStamp - this.lastTimestamp < threshold) {
-                    if (e.key != 'Enter') {
-                        this.chunk += e.key;
-                        this.lastTimestamp = e.timeStamp;
-                    } else {
-                        e.preventDefault();
+            next: event => {
+                if (this.lastTimestamp == 0 || event.timeStamp - this.lastTimestamp < threshold) {
+                    if (event.key == 'Enter') {
+                        event.preventDefault();
                         this.result.next(this.chunk);
                         this.chunk = '';
                         this.lastTimestamp = 0;
+                    } else {
+                        this.chunk += event.key;
+                        this.lastTimestamp = event.timeStamp;
                     }
-                } else if (e.timeStamp - this.lastTimestamp > threshold) {
-                    this.chunk = e.key;
-                    this.lastTimestamp = e.timeStamp;
+                } else if (event.timeStamp - this.lastTimestamp > threshold) {
+                    this.chunk = event.key;
+                    this.lastTimestamp = event.timeStamp;
                 }
             },
         });
@@ -37,9 +37,7 @@ export class HidScannerService {
     public dispose(): void {
         this.chunk = '';
         this.lastTimestamp = 0;
-        if (this.keyEventSubscription) {
-            this.keyEventSubscription.unsubscribe();
-        }
+        this.keyEventSubscription?.unsubscribe();
     }
 
 }

@@ -1,28 +1,27 @@
 {
     "dependencies": {
-        "@angular/animations": "^13.2.1",
-        "@angular/common": "^13.2.1",
-        "@angular/compiler": "^13.2.1",
-        "@angular/core": "^13.2.1",
-        "@angular/forms": "^13.2.1",
-        "@angular/platform-browser": "^13.2.1",
-        "@angular/platform-browser-dynamic": "^13.2.1",
-        "@angular/router": "^13.2.1",
-        "rxjs": "^7.5.2",
-        "tslib": "^2.3.1",
-        "zone.js": "^0.11.4"
+        "@angular/animations": "^15.0.0",
+        "@angular/common": "^15.0.0",
+        "@angular/compiler": "^15.0.0",
+        "@angular/core": "^15.0.0",
+        "@angular/forms": "^15.0.0",
+        "@angular/platform-browser": "^15.0.0",
+        "@angular/platform-browser-dynamic": "^15.0.0",
+        "@angular/router": "^15.0.0",
+        "@ng-all/eslint-config": "^0.1.1",
+        "rxjs": "^7.5.7",
+        "tslib": "^2.4.1",
+        "zone.js": "^0.12.0"
     },
     "devDependencies": {
-        "@angular-devkit/build-angular": "^13.2.2",
-        "@angular/cli": "^13.2.2",
-        "@angular/compiler-cli": "^13.2.1",
-        "@angular/language-service": "^13.2.1",
-        "@types/node": "^17.0.14",
-        "codelyzer": "^6.0.2",
-        "ng-packagr": "^13.2.1",
-        "ts-node": "^10.4.0",
-        "tslint": "^6.1.3",
-        "typescript": "~4.5.5"
+        "@angular-devkit/build-angular": "^15.0.0",
+        "@angular/cli": "^15.0.0",
+        "@angular/compiler-cli": "^15.0.0",
+        "@angular/language-service": "^15.0.0",
+        "@types/node": "^18.11.9",
+        "ng-packagr": "^15.0.0",
+        "ts-node": "^10.9.1",
+        "typescript": "~4.8.4"
     },
     "name": "@ng-all/hid-scanner",
     "private": true,
@@ -32,10 +31,10 @@
         "url": "https://github.com/ng-all/hid-scanner.git"
     },
     "scripts": {
-        "build": "ng build",
+        "build": "ng build hid-scanner",
         "deploy": "npm publish ./dist/hid-scanner",
-        "lint": "tsc && ng lint",
-        "start": "ng build && ng serve hid-scanner-puppet"
+        "lint": "tsc && eslint --ext .ts --ext html ./",
+        "start": "ng build hid-scanner && ng serve hid-scanner-puppet"
     },
     "version": "0.0.0"
 }

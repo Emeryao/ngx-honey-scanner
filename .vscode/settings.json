@@ -3,6 +3,18 @@
     "editor.formatOnSave": false,
     "editor.tabSize": 4,
     "editor.wordWrap": "off",
+    "eslint.options": {
+        "extensions": [
+            ".ts",
+            ".js",
+            ".html"
+        ]
+    },
+    "eslint.validate": [
+        "javascript",
+        "typescript",
+        "html"
+    ],
     "files.encoding": "utf8",
     "files.eol": "\n",
     "files.insertFinalNewline": true,

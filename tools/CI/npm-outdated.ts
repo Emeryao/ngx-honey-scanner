@@ -1,20 +1,19 @@
-// tslint:disable: no-console
-
-let json: string = process.argv[2];
+/* eslint-disable no-console */
+const json: string = process.argv[2];
 
 if (!json) {
     process.exit(0);
 }
 
-interface OutputRes { current: string; wanted: string; latest: string; location: string; }
+interface OutputRes { current: string; wanted: string; latest: string; location: string }
 
 try {
-    let output: { [key: string]: OutputRes } = JSON.parse(json) as { [key: string]: OutputRes };
+    const output: Record<string, OutputRes> = JSON.parse(json) as Record<string, OutputRes>;
 
-    let outdated: Array<OutputRes> = new Array<OutputRes>();
+    const outdated: Array<OutputRes> = new Array<OutputRes>();
 
     for (const key in output) {
-        if (output.hasOwnProperty(key)) {
+        if (Reflect.has(output, key)) {
             const res: OutputRes = output[key];
             if (res.current != res.wanted) {
                 outdated.push(res);
@@ -29,7 +28,7 @@ try {
     } else {
         console.log('🎉 all dependencies are up to date');
     }
-} catch (error) {
+} catch (error: unknown) {
     console.log(error);
     process.exit(0);
 }
