@@ -1,19 +1,20 @@
 {
-    "publishConfig": {
-        "access": "public"
-    },
     "dependencies": {
         "tslib": "^2.6.0"
     },
     "name": "@ng-all/hid-scanner",
     "peerDependencies": {
-        "@angular/common": "^16.0.0",
-        "@angular/core": "^16.0.0"
+        "@angular/core": "^17.3.0",
+        "rxjs": "^7.8.0"
+    },
+    "publishConfig": {
+        "access": "public"
     },
     "repository": {
         "directory": "projects/hid-scanner",
         "type": "git",
         "url": "https://github.com/ng-all/hid-scanner.git"
     },
-    "version": "0.1.5"
+    "sideEffects": false,
+    "version": "0.2.0"
 }
