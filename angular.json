@@ -35,7 +35,7 @@
         "hid-scanner-puppet": {
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:browser",
+                    "builder": "@angular-devkit/build-angular:application",
                     "configurations": {
                         "production": {
                             "budgets": [
@@ -50,7 +50,6 @@
                                     "type": "anyComponentStyle"
                                 }
                             ],
-                            "buildOptimizer": true,
                             "extractLicenses": true,
                             "fileReplacements": [
                                 {
@@ -61,8 +60,7 @@
                             "namedChunks": false,
                             "optimization": true,
                             "outputHashing": "all",
-                            "sourceMap": false,
-                            "vendorChunk": false
+                            "sourceMap": false
                         }
                     },
                     "options": {
@@ -72,8 +70,9 @@
                             "src/assets"
                         ],
                         "index": "src/index.html",
-                        "main": "src/main.ts",
-                        "outputPath": "dist/hid-scanner-puppet",
+                        "outputPath": {
+                            "base": "dist/hid-scanner-puppet"
+                        },
                         "polyfills": [
                             "zone.js"
                         ],
@@ -81,18 +80,19 @@
                         "styles": [
                             "src/styles.scss"
                         ],
-                        "tsConfig": "tsconfig.app.json"
+                        "tsConfig": "tsconfig.app.json",
+                        "browser": "src/main.ts"
                     }
                 },
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "hid-scanner-puppet:build:production"
+                            "buildTarget": "hid-scanner-puppet:build:production"
                         }
                     },
                     "options": {
-                        "browserTarget": "hid-scanner-puppet:build"
+                        "buildTarget": "hid-scanner-puppet:build"
                     }
                 }
             },
